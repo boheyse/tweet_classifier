@@ -12,7 +12,7 @@ public class ClassifyTweets {
   String[] targetArray; // holds the target sentiment of each tweet (column 0)
   String[] tweetArray;  // holds the tweet data (column 5)
   List<String> target = new ArrayList<String>();  //
-  List<String> tweets = new ArrayList<String>();  // 
+  List<String> tweets = new ArrayList<String>();  //
   Set<String> negSet = new HashSet<>(); // hashset of all negative words
   Set<String> posSet = new HashSet<>(); // hashset of all positive words
 
@@ -154,6 +154,8 @@ public class ClassifyTweets {
       if(posCount>negCount)
         sentiment[k] = "4";
       else if(negCount>posCount)
+        sentiment[k] = "0";
+      else if((negCount>0 && posCount>0) && (negCount==posCount))
         sentiment[k] = "0";
       else
         sentiment[k] = "2";
